@@ -1,14 +1,12 @@
 ---
 name: 機能改善
 about: 既存機能の改善提案
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 # 概要
-例: 静的テストを追加
 
 # 関連するコード
 
