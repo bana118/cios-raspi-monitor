@@ -35,10 +35,11 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Check git tag
-        uses: butlerlogic/action-autotag@1.1.2
+        uses: bana118/action-autotag@1.1.6
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           strategy: package
           root: "client"
           tag_prefix: "v"
+          dry_run: true
