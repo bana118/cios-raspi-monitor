@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - main
+defaults:
+  run:
+    working-directory: ./client
 
 jobs:
   check:
@@ -26,13 +29,10 @@ jobs:
             ${{ runner.os }}-client-${{ env.cache-name }}-
             ${{ runner.os }}-client-
             ${{ runner.os }}-
-        working-directory: ./client
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        working-directory: ./client
       - name: Lint
         run: yarn lint
-        working-directory: ./client
       - name: Check git tag
         uses: bana118/action-autotag@v1
         with:
