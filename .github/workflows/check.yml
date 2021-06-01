@@ -34,7 +34,7 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Check git tag
-        uses: bana118/action-autotag
+        uses: bana118/action-autotag@1.1.3
         with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           strategy: package
