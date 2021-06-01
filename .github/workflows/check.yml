@@ -1,13 +1,9 @@
-name: Node
+name: Check
 
 on:
   pull_request:
     branches:
       - main
-
-defaults:
-  run:
-    working-directory: ./client
 
 jobs:
   check:
@@ -25,21 +21,20 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ~/.cache/yarn
-          key: ${{ runner.os }}-client-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-client-${{ env.cache-name }}-
-            ${{ runner.os }}-client-
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Lint
         run: yarn lint
       - name: Check git tag
-        uses: bana118/action-autotag@1.1.4
+        uses: bana118/action-autotag@1.1.6
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           strategy: package
-          root: "client"
           tag_prefix: "v"
           dry_run: true
