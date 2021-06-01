@@ -42,4 +42,3 @@ jobs:
           strategy: package
           root: "client"
           tag_prefix: "v"
-          dry_run: true
