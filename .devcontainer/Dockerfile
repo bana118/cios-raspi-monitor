@@ -8,4 +8,5 @@ RUN apt update \
     procps \
     && apt autoremove -y \
     && apt clean -y \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && yarn global add @vue/cli
