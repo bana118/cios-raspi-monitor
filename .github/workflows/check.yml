@@ -33,3 +33,11 @@ jobs:
       - name: Lint
         run: yarn lint
         working-directory: ./client
+      - name: Check git tag
+        uses: bana118/action-autotag@v1
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          strategy: package
+          root: "client"
+          tag_prefix: "v"
+          dry_run: true
